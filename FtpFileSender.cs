@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace FTP_uygulama
+public class FtpFileSender
 {
-    class FtpFileSender
-    {
         private string FileName="", LocalPath="", ServerPath="", User="", Pass="", Server="";
         public FtpFileSender()
         {
@@ -45,7 +40,7 @@ namespace FTP_uygulama
         {
             this.Server = Server;
         }
-        public void SendFile()
+        public string SendFile()
         {
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(this.Server+this.ServerPath+this.FileName);
             request.Method = WebRequestMethods.Ftp.UploadFile;
@@ -64,10 +59,10 @@ namespace FTP_uygulama
             requestStream.Close();
 
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-
-            System.Windows.Forms.MessageBox.Show("Upload File Complete, status " + response.StatusDescription);
+            string responses=response.StatusDescription;
 
             response.Close();
+            return "Upload File Complete, status " + responses;
         }
-    }
-}
+	}
+
