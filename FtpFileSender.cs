@@ -1,3 +1,7 @@
+//Coder:Murat ÖZKUL
+//Date:25.11.2013
+//Website:http://www.pcply.org
+
 using System;
 using System.IO;
 using System.Net;
